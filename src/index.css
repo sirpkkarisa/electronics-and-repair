@@ -38,7 +38,6 @@ code {
   width: 100%;
   max-height: 100px;
   height: 50px;
-  /* padding-top: 2px; */
   background-color: #3295a8;
   color: #fafafa;
   display: flex;
@@ -143,10 +142,6 @@ code {
   box-shadow: -2px 2px #d0d0d0;
 }
 
-/* .ItemList {
-  display: flex;
-} */
-
 .Item {
   border-bottom: 1px solid #d0d0d0;
 }
@@ -250,4 +245,70 @@ code {
 
 .Footer a:hover {
   text-decoration: underline;
+}
+
+/* 
+*
+*BEGINNING OF ADMIN SPECIFIC STYLES
+*
+*/
+
+.AdminBody {
+  display: flex;
+}
+
+.admin-hero-section {
+  margin-left: 3%;
+  min-width: 500px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.tasks-search {
+  height: 25px;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.tasks-search input {
+  height: 100%;
+  width: 99%;
+  border: none;
+  border-radius: 5px;
+  padding: 5px;
+  outline: 0.5px solid #d0d0d0;
+}
+
+.display-region {
+  width: 95.5%;
+  background-color: #ffffff;
+  color: #333333;
+  border-radius: 3px;
+  border: 1px solid #d0d0d0;
+  padding: 20px;
+  box-shadow: -2px 2px #d0d0d0;
+  display: flex;
+  height: 69vh;
+}
+
+.display-region .PendingRepairs,.display-region .CompletedRepairs {
+  border-right: 1px solid #d0d0d0;
+  height: auto;
+  width: 350px;
+  padding-left: 20px;
+  overflow-y: scroll;
+}
+
+.SpareParts {
+  width: 100px;
+  border-right: none;
+  text-align: right;
+}
+
+.display-region li {
+  min-height: 100px;
+  height: auto;
+  margin-top: 10px;
+  display: flex;
+  color: #777777;
 }

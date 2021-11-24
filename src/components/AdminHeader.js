@@ -11,11 +11,9 @@ const AdminHeader = () => {
             <ul className='navigation-list'>
                 <li><a href='/'>Electronics</a></li>
                 <li><a href='/services'>Services</a></li>
-                <li><a href='/contacts'>Contacts</a></li>
                 <li><a href='/reviews'>Reviews</a></li>
+                <li><a href='/profile' style={{color:'#00ff00',marginLeft:'10px'}}>John Doe</a></li>
             </ul>
-            <div><a href='/profile' style={{color:'#ffffff',marginLeft:'10px'}}>John Doe</a></div>
-
         </header>
     )
 }
