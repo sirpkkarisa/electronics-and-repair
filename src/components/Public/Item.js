@@ -1,14 +1,14 @@
 import React from 'react'
 import ItemSpecs from './ItemSpecs'
-
+import { Link } from 'react-router-dom'
 
 const Item = ({src, alt}) => {
     return (
         <li className='Item'>
-            <a href='#link'>
+            <Link to='#link'>
                 <img src={src} alt={alt}/>
                 <ItemSpecs/>
-            </a>
+            </Link>
         </li>
     )
 }

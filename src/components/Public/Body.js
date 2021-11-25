@@ -1,9 +1,7 @@
-import Electronics from "./Electronics"
-import InputField from "./InputField"
+import InputField from "../HTMLElems/InputField"
 import SomeReviews from "./SomeReviews"
 import ServicesOffered from "./ServicesOffered"
-// import Services from "./Services"
-// import Reviews from "./Reviews"
+import { Outlet } from "react-router-dom"
 
 const Body = () => {
     return (
@@ -14,9 +12,7 @@ const Body = () => {
                 />
             <div className='hero-section'>
                 <ServicesOffered/>
-                <Electronics/>
-                {/* <Services/> */}
-                {/* <Reviews/> */}
+                <Outlet/>
                 <SomeReviews/>
             </div>
         </div>

@@ -19,6 +19,7 @@ ul {
 a {
   text-decoration: none;
 }
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
@@ -84,6 +85,11 @@ code {
   text-decoration: none;
   width:100%;
   color: #fafafa;
+}
+
+.navigation-list a:hover{
+  border-bottom: 5px solid #ffffff;
+  transition: all ease-in-out 100ms;
 }
 
 .Body {
@@ -266,7 +272,7 @@ code {
 
 .tasks-search {
   height: 25px;
-  width: 100%;
+  width: 90%;
   margin-bottom: 20px;
 }
 
@@ -291,6 +297,12 @@ code {
   height: 69vh;
 }
 
+@-moz-document url-prefix() {
+  .display-region {
+    height: 68vh;
+  }
+}
+
 .display-region .PendingRepairs,.display-region .CompletedRepairs {
   border-right: 1px solid #d0d0d0;
   height: auto;
@@ -300,15 +312,149 @@ code {
 }
 
 .SpareParts {
+  min-width: 30px;
   width: 100px;
-  border-right: none;
-  text-align: right;
+  margin-right: 5%;
+  padding: 5px;
+  display: flex;
+  flex-direction: column;
+}
+
+.SpareParts ul {
+  font-size: xx-small;
 }
 
 .display-region li {
   min-height: 100px;
   height: auto;
-  margin-top: 10px;
+  margin-top: 5px;
   display: flex;
   color: #777777;
+}
+
+/* *
+*
+* Scrollbar Styling
+*
+ */
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-track {
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #d0d0d0;
+  border-radius: 10px;
+}
+
+.RepairForm {
+  width: 300px;
+  height: 50vh;
+}
+
+.RepairForm div {
+  width: 100%;
+  height: 40px;
+}
+
+.RepairForm input {
+  height: 100%;
+  width: 99%;
+  border: none;
+  border-radius: 5px;
+  padding: 5px;
+  outline: 0.5px solid #d0d0d0;
+}
+
+.custom-button {
+  background-color: #3295a8;
+  width: 50%;
+  height: 70%;
+  border: none;
+  margin-top: 20px;
+  border-radius: 5px;
+  outline: 1px solid #3295a8;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  padding: 5px;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.CustomerForm {
+  position: relative;
+  bottom: 150px;
+  left: 120px;
+  box-shadow: 5px 5px #3295a8;
+}
+
+.CustomerForm .custom-button{
+  width: 100%;
+  cursor: pointer;
+}
+
+.custom-button:hover{
+  background-color: #3fafaf;
+}
+
+.AdminBody .search-div {
+  display: flex;
+}
+
+.search-icon {
+  width: 10%;
+  color: #ffffff;
+  background-color: #3295a8;
+  height: 37px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-top-right-radius: 5px;
+  cursor: pointer;
+}
+
+.search-icon:hover {
+  background-color: #3fafaf;
+  font-weight: bold;
+}
+
+.ReviewForm {
+  position: absolute;
+  width: fit-content;
+  top: 420px;
+  right: 120px;
+}
+
+.SomeReviews .custom-button {
+  width: 100%;
+}
+
+.rating {
+  margin-top: 20px;
+  cursor: pointer;
+}
+
+.rating:hover {
+  color: #777777;
+}
+
+.ReviewForm .review-btn {
+  width: 100%;
+  height: 20px;
+  color: #777777;
+}
+
+@-moz-document url-prefix() {
+  .ReviewForm {
+    position: absolute;
+    width: fit-content;
+    top: 420px;
+    right: 70px;
+  }
 }

@@ -1,9 +1,8 @@
-import InputField from "./InputField"
-
+import InputField from '../HTMLElems/InputField'
 
 const CustomerForm = () => {
     return (
-        <div>
+        <div className='CustomerForm'>
            <InputField 
                 placeholder='ID/Passport No.'
            /> 
@@ -28,6 +27,7 @@ const CustomerForm = () => {
            <InputField
                 placeholder='Phone'
            /> 
+           <button className='custom-button'>Submit</button>
         </div>
     )
 }

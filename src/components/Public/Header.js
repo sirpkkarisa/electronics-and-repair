@@ -1,5 +1,5 @@
-import InputField from "./InputField"
-
+import InputField from '../HTMLElems/InputField'
+import { Link } from 'react-router-dom'
 
 const Header = () => {
     return (
@@ -10,10 +10,10 @@ const Header = () => {
                 divClass='search-div'
                 />
             <ul className='navigation-list'>
-                <li><a href='/'>Electronics</a></li>
-                <li><a href='/services'>Services</a></li>
-                <li><a href='/contacts'>Contacts</a></li>
-                <li><a href='/reviews'>Reviews</a></li>
+                <li><Link to='/'>Electronics</Link></li>
+                <li><Link to='/services'>Services</Link></li>
+                <li><Link to='/contacts'>Contacts</Link></li>
+                <li><Link to='/reviews'>Reviews</Link></li>
             </ul>
         </header>
     )
