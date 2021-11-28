@@ -1,11 +1,11 @@
 import AdminBody from "./AdminBody"
 import Header from "./AdminHeader"
 
-const Admin = () => {
+const Admin = ({data, onSubmit}) => {
     return (
         <div>
            <Header/>
-           <AdminBody/>
+           <AdminBody data={data} onSubmit={onSubmit}/>
         </div>
     )
 }

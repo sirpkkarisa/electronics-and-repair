@@ -1,32 +1,16 @@
 
-const ServiceItem = () => {
+const ServiceItem = ({data}) => {
     return (
-        <li className='Item ServiceItem'>
             <a href='#link'>
                <ul>
-                    <li><h4>Service Title</h4></li>
-                    <li>Service Charge: <strong>$10</strong></li>
+                    <li><h4>{data.title}</h4></li>
+                    <li>Service Charge: <strong>${data.charge}</strong></li>
                     <li>Service Description:
-                    <p>
-                    This is an item's description so that the customers can view
-                    This is an item's description so that the customers can view
-                    This is an item's description so that the customers can view
-                    This is an item's description so that the customers can view
-                    This is an item's description so that the customers can view
-                    This is an item's description so that the customers can view
-                    This is an item's description so that the customers can view
-                    This is an item's description so that the customers can view
-                    This is an item's description so that the customers can view
-                    This is an item's description so that the customers can view
-                    This is an item's description so that the customers can view
-                    This is an item's description so that the customers can view
-                    This is an item's description so that the customers can view
-                    </p>
+                    <p>{data.description}</p>
                     </li>
-                    <li>Reviews: <strong>3</strong></li>
+                    <li>Reviews: <strong>{data.reviews? data.reviews:'No Reviews'}</strong></li>
                </ul>
             </a>
-        </li>
     )
 }
 

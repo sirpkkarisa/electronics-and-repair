@@ -1,13 +1,11 @@
+import PendingItem from "./PendingItem"
 
 const SpareParts = () => {
     return (
-        <div className='SpareParts'>
-            SpareParts
+        <div className='PendingRepairs'>
+            <h3>SpareParts</h3>
             <ul>
-                <li>SpareParts</li>
-                <li>SpareParts</li>
-                <li>SpareParts</li>
-                <li>SpareParts</li>
+                <li><PendingItem/></li>
             </ul>
         </div>
     )

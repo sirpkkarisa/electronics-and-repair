@@ -171,6 +171,7 @@ code {
 .Item img {
   min-height: 90px;
   max-height: 250px;
+  max-width: 250px;
   margin-bottom: 10px;
   margin-right: 4%;
 }
@@ -303,7 +304,7 @@ code {
   }
 }
 
-.display-region .PendingRepairs,.display-region .CompletedRepairs {
+.display-region .PendingRepairs{
   border-right: 1px solid #d0d0d0;
   height: auto;
   width: 350px;
@@ -311,25 +312,13 @@ code {
   overflow-y: scroll;
 }
 
-.SpareParts {
-  min-width: 30px;
-  width: 100px;
-  margin-right: 5%;
-  padding: 5px;
-  display: flex;
-  flex-direction: column;
+.PendingRepairs:last-child{
+  border-right: none;
 }
 
-.SpareParts ul {
-  font-size: xx-small;
-}
-
-.display-region li {
-  min-height: 100px;
-  height: auto;
-  margin-top: 5px;
-  display: flex;
-  color: #777777;
+.PendingRepairs li ul li {
+  font-size: smaller;
+  height: max-content;
 }
 
 /* *
@@ -446,7 +435,7 @@ code {
 
 .ReviewForm .review-btn {
   width: 100%;
-  height: 20px;
+  height: 30px;
   color: #777777;
 }
 
@@ -457,4 +446,73 @@ code {
     top: 420px;
     right: 70px;
   }
+} 
+
+.comment-div {
+  height: 50px;
+}
+
+.comment-div input {
+  height: 100%;
+  border: none;
+  border-radius: 5px;
+  outline: 1px solid #3fafaf;
+}
+
+.Forms {
+  position: absolute;
+  top: 420px;
+  left: 25%;
+  min-height: 150px;
+  width: 250px;
+}
+
+.Forms select {
+  width: 88%;
+  height: 30px;
+  border: none;
+  border-radius: 5px;
+  outline: 1px solid #3fafff;
+}
+
+.Form {
+  width: 220px;
+  height: max-content;
+}
+
+.Form div {
+  height: 35px;
+  width: 100%;
+  margin-top: 5px;
+}
+
+.Form input {
+  height: 90%;
+  width: 100%;
+  border: none;
+  border-radius: 5px;
+  outline: 1px solid #3fafaf;
+}
+
+.login-title {
+  color: #333333;
+}
+
+.Login {
+  min-width: 300px;
+  height: 150px;
+}
+
+.Login div{
+  width: 300px;
+  height: 40px;
+  margin-bottom: 10px;
+}
+
+.Login input {
+  width: 100%;
+  height: 100%;
+  border: none;
+  border-radius: 5px;
+  outline: 1px solid #3fafaf;
 }

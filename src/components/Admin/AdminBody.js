@@ -3,7 +3,7 @@ import { useState } from 'react'
 import CompletedRepairs from './CompletedRepairs'
 import InputField from '../HTMLElems/InputField'
 import PendingRepairs from './PendingRepairs'
-import ServiceForm from './RepairForm'
+import RepairForm from './RepairForm'
 import SpareParts from './SpareParts'
 import ArrowForward from '@mui/icons-material/ArrowForward'
 import Close from '@mui/icons-material/Close'
@@ -11,8 +11,20 @@ import EntryForms from './EntryForms'
 
 
 
-const AdminBody = () => {
+const AdminBody = ({data, onSubmit}) => {
+    const completed = []
+    const pending = []
+
     const [toggleEntyForms, setToggleEntryForms] = useState(false)
+
+    data.forEach(item => {
+        if(item.completed){
+            completed.push(item)
+        }else{
+            pending.push(item)
+        }
+    })
+
     const onClick = (e) => {
         e.preventDefault()
         setToggleEntryForms(!toggleEntyForms)
@@ -20,9 +32,10 @@ const AdminBody = () => {
     return (
         <div className='Body AdminBody'>
             <div className='left-display'>
-                <ServiceForm/>
+                <RepairForm onSubmit={onSubmit}/>
                 <div>
-                    <button 
+                    <button
+                        className='custom-button'
                         onClick={onClick}>
                         New Entry {toggleEntyForms?<Close/>: <ArrowForward/>}
                     </button>
@@ -38,8 +51,9 @@ const AdminBody = () => {
                     <span className='search-icon'><Search/></span>
                 </div>
                 <div className='display-region'>
-                    <PendingRepairs/>
-                    <CompletedRepairs/>
+                    <CompletedRepairs data={completed}/>
+                    <PendingRepairs data={pending}/>
+
                     <SpareParts/>
                 </div>
             </div>

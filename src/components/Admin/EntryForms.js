@@ -9,7 +9,7 @@ const EntryForms = () => {
         setOption(parseInt(e.target.value))
     }
     return (
-        <form>
+        <form className='Forms'>
             <select onChange={onSelect}>
                 <option value='1'>Electronics</option>
                 <option value='2'>Spare Parts</option>

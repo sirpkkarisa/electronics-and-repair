@@ -2,14 +2,14 @@ import React from 'react'
 import ItemSpecs from './ItemSpecs'
 import { Link } from 'react-router-dom'
 
-const Item = ({src, alt}) => {
+const Item = ({src, alt, data}) => {
     return (
-        <li className='Item'>
+        <>
             <Link to='#link'>
                 <img src={src} alt={alt}/>
-                <ItemSpecs/>
+                <ItemSpecs specs={data}/>
             </Link>
-        </li>
+        </>
     )
 }
 

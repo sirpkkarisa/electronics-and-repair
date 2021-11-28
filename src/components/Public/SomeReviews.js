@@ -27,6 +27,7 @@ const Reviews = () => {
                    isForm && <form className='ServiceForm ReviewForm'>
                     <InputField
                         placeholder='Comment'
+                        divClass='comment-div'
                     />
                     <div className='rating'>
                         <StarBorderOutlinedIcon/>

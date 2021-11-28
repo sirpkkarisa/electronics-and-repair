@@ -1,27 +1,22 @@
 import Item from "./Item"
 
 
-const Electronics = () => {
+const Electronics = ({data}) => {
+    const itemJSX = data.map((item,i)=> {
+        return (<li key={item.id} className='Item'>
+                <Item key={i} src={item.imgURL} alt={item.title} data={{
+                    title: item.title,
+                    cost: item.cost,
+                    QOH: item.QOH,
+                    description: item.description,
+                }}/>
+            </li>)
+    })
     return (
         <div className='DynamicRegion'>
             <h2>Available Electronics & Accessories</h2>
             <ul className='ItemList'>
-                <Item 
-                src='https://images.pexels.com/photos/788946/pexels-photo-788946.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500'
-                alt='Image 1'
-                />
-                <Item 
-                src='https://images.pexels.com/photos/788946/pexels-photo-788946.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500'
-                alt='Image 1'
-                />
-                <Item 
-                src='https://images.pexels.com/photos/788946/pexels-photo-788946.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500'
-                alt='Image 1'
-                />
-                <Item 
-                src='https://images.pexels.com/photos/788946/pexels-photo-788946.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500'
-                alt='Image 1'
-                />
+                {itemJSX}
             </ul>
         </div>
     )

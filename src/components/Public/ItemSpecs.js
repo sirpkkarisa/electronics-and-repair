@@ -1,33 +1,19 @@
 
-const ItemSpecs = () => {
+const ItemSpecs = ({specs}) => {
     return (
         <ul className='ItemSpecs'>
                 <li>
-                    <h3>Item Title</h3>
+                    <h3>{specs.title}</h3>
                 </li>
                 <li className='specs'>
-                    Cost Per Item: <strong>$10</strong>
+                    Cost Per Item: <strong>${specs.cost}</strong>
                 </li>
                 <li className='specs'>
-                    Quantity On Hand: <strong>3</strong>
+                    Quantity On Hand: <strong>{specs.QOH? specs.QOH: 'Out of Stock'}</strong>
                 </li>
                 <li className='specs'>
                     Item Description: 
-                    <p>
-                    This is an item's description so that the customers can view
-                    This is an item's description so that the customers can view
-                    This is an item's description so that the customers can view
-                    This is an item's description so that the customers can view
-                    This is an item's description so that the customers can view
-                    This is an item's description so that the customers can view
-                    This is an item's description so that the customers can view
-                    This is an item's description so that the customers can view
-                    This is an item's description so that the customers can view
-                    This is an item's description so that the customers can view
-                    This is an item's description so that the customers can view
-                    This is an item's description so that the customers can view
-                    This is an item's description so that the customers can view
-                    </p>
+                    <p>{specs.description}</p>
                 </li>
         </ul>
     )

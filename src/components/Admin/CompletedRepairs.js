@@ -1,14 +1,16 @@
+import PendingItem from "./PendingItem"
 
-const CompletedRepairs = () => {
+const CompletedRepairs = ({data}) => {
+    const itemJSX = data.map(item=> {
+        return(<li key={item.id}>
+            <PendingItem data={item}/>
+        </li>)
+    })
     return (
-        <div className='CompletedRepairs'>
-            Completed Repairs
+        <div className='PendingRepairs'>
+            <h3>Completed Repairs</h3>
             <ul>
-                <li>Completed Repairs</li>
-                <li>Completed Repairs</li>
-                <li>Completed Repairs</li>
-                <li>Completed Repairs</li>
-                <li>Completed Repairs</li>
+                {itemJSX}
             </ul>
         </div>
     )

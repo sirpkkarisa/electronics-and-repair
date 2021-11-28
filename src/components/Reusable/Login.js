@@ -6,11 +6,11 @@ const Login = () => {
         <div>
         <Header/>
             <div className='Body'>
-            <h1>Login</h1>
-            <form>
+            <h1 className='login-title'>Login</h1>
+            <form className='Login'>
                     <InputField placeholder='Username/E-mail'/>
                     <InputField type='password' placeholder='Password'/>
-                    <div><button>Login</button></div>
+                    <div><button className='custom-button'>Login</button></div>
             </form>
         </div>
     </div>

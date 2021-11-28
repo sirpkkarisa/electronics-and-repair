@@ -1,8 +1,8 @@
 
-const InputField = ({placeholder, divClass}) => {
+const InputField = ({placeholder, divClass, type, onChange}) => {
     return (
         <div className={divClass}>
-            <input placeholder={placeholder}/>
+            <input placeholder={placeholder} type={type} onChange={onChange}/>
         </div>
     )
 }

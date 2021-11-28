@@ -7,11 +7,14 @@ const RegisterUser = () => {
         <div>
             <Header/>
            <div className='Body'>
-               <h1>Register</h1>
-               <form>
-                <InputField placeholder='Username/E-mail'/>
+               <h1 className='login-title'>Register</h1>
+               <form className='Login'>
+                <InputField placeholder='First Name'/>
+                <InputField placeholder='Last Name'/>
+                <InputField placeholder='E-mail'/>
                 <InputField type='password' placeholder='Password'/>
-                <div><button>Login</button></div>
+                <InputField type='password' placeholder='Confirm Password' type='password'/>
+                <div><button className='custom-button'>Register</button></div>
              </form>
             </div>
         </div>
