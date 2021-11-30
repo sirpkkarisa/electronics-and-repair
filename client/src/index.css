@@ -427,9 +427,6 @@ code {
 .rating {
   margin-top: 20px;
   cursor: pointer;
-}
-
-.rating:hover {
   color: #777777;
 }
 

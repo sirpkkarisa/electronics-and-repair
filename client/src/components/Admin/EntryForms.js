@@ -3,7 +3,7 @@ import ElectronicsForm from './ElectronicsForm'
 import ServiceForm from './ServiceForm'
 import SparePartsForm from './SparePartsForm'
 
-const EntryForms = () => {
+const EntryForms = ({onAddElectronics, onAddServices, onAddParts}) => {
     const [ option, setOption ] = useState(1)
     const onSelect = (e) => {
         setOption(parseInt(e.target.value))
@@ -15,9 +15,9 @@ const EntryForms = () => {
                 <option value='2'>Spare Parts</option>
                 <option value='3'>Services</option>
             </select>
-            { option === 1 && <ElectronicsForm/>}
-            { option === 2 && <SparePartsForm/>}
-            { option === 3 && <ServiceForm/> }
+            { option === 1 && <ElectronicsForm onAddElectronics={onAddElectronics}/>}
+            { option === 2 && <SparePartsForm onAddParts={onAddParts}/>}
+            { option === 3 && <ServiceForm onAddServices={onAddServices}/> }
         </form>
     )
 }

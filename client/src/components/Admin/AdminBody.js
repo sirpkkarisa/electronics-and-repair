@@ -11,20 +11,20 @@ import EntryForms from './EntryForms'
 
 
 
-const AdminBody = ({data, onSubmit}) => {
+const AdminBody = ({data,parts, onSubmit, onAddElectronics, onAddServices, onAddParts}) => {
     const completed = []
     const pending = []
 
     const [toggleEntyForms, setToggleEntryForms] = useState(false)
 
     data.forEach(item => {
+        
         if(item.completed){
-            completed.push(item)
+            completed.unshift(item)
         }else{
             pending.push(item)
         }
     })
-
     const onClick = (e) => {
         e.preventDefault()
         setToggleEntryForms(!toggleEntyForms)
@@ -40,7 +40,10 @@ const AdminBody = ({data, onSubmit}) => {
                         New Entry {toggleEntyForms?<Close/>: <ArrowForward/>}
                     </button>
                 </div>
-                { toggleEntyForms && <EntryForms/>}
+                { toggleEntyForms && <EntryForms onAddElectronics={onAddElectronics} 
+                                                 onAddServices={onAddServices}
+                                                 onAddParts={onAddParts}
+                                                 />}
             </div>
             <div className='admin-hero-section'>
                 <div className='search-div'>
@@ -51,10 +54,9 @@ const AdminBody = ({data, onSubmit}) => {
                     <span className='search-icon'><Search/></span>
                 </div>
                 <div className='display-region'>
-                    <CompletedRepairs data={completed}/>
                     <PendingRepairs data={pending}/>
-
-                    <SpareParts/>
+                    <CompletedRepairs data={completed}/>
+                    <SpareParts parts={parts}/>
                 </div>
             </div>
         </div>

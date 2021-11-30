@@ -9,7 +9,7 @@ const PendingRepairs = ({data}) => {
     })
     return (
         <div className='PendingRepairs'>
-            <h3>Completed Repairs</h3>
+            <h3>Pending Repairs</h3>
             <ul>
                 {itemJSX}
             </ul>

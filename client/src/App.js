@@ -7,11 +7,11 @@ import Reviews from './components/Public/Reviews'
 import Services from './components/Public/Services';
 import Error404 from './components/Reusable/Error_404';
 import Login from "./components/Reusable/Login";
-import RegisterUser from "./components/Admin/RegisterUser";
+// import RegisterUser from "./components/Admin/RegisterUser";
 
 const App =()=> {
 
-  const electronics = [
+  const electronicsObj = [
     { id:1,title: 'iPhone 13',cost: 1999,QOH: 10,description:'This iPhone 13 Pro Max. It comes with several features such as 64MP back camera,256GB storage and 16GB RAM',
       imgURL:'https://images.pexels.com/photos/788946/pexels-photo-788946.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500'
     },
@@ -21,7 +21,7 @@ const App =()=> {
     {id:3,title: 'Oppo Reno 6',cost: 500,QOH: 10,description:'Oppo Reno 6 5G just have smaller screen about 7mm other specs of Note 11 pro D920 120Hz 3.5mm jack 108Mp S5KHM2 5160Mah battery Stereo Speaker Infrared Port Ufs',
       imgURL:'https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcRWjoCiUoMwsV6apL65ucy5gLwPjKb4tXAvvsr0Dhnneg0-WBBJBanb0N8cNL16HFdWCbJnFM2iCqc&usqp=CAc'
     },
-    {id:4,title: 'Oppo A83',cost: 200,QOH: 3,description:'This iPhone 13 Pro Max. It comes with several features such as 64MP back camera,256GB storage and 16GB RAM',
+    {id:4,title: 'Oppo A83',cost: 200,QOH: 3,description:'It comes with several features such as 64MP back camera,256GB storage and 16GB RAM',
       imgURL:'https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcRWjoCiUoMwsV6apL65ucy5gLwPjKb4tXAvvsr0Dhnneg0-WBBJBanb0N8cNL16HFdWCbJnFM2iCqc&usqp=CAc'
     },
     {id:5,title: 'Macbook Pro',cost: 2199,QOH: 10,description:'New. 8-Core CPU 14-Core GPU 16GB Unified Memory 512GB SSD Storage¹ · 16-core Neural Engine · 14-inch Liquid Retina XDR display · Three Thunderbolt 4 ports, HDMI',
@@ -57,7 +57,7 @@ const App =()=> {
     {id: 10,reviews:5,completed:true, title:'title 10',charge:20,description:'It comes with several features such as 64MP back camera,256GB storage and 16GB RAM'}
   ]
 
-  const services = [
+  const servicesObj = [
     {id: 1,reviews:1, title:'title 1',charge:20,description:"iMac — beautiful, intuitive all-in-one desktops with incredible processors, a Retina display, and the world's most advanced desktop operating system"},
     {id: 2,reviews:3, title:'title 2',charge:10,description:'A vinyl cutter is an entry level machine for making signs. Computer designed vector files with patterns and letters are directly cut on the roll of vinyl which is mounted and fed into the vinyl cutter through USB or serial cable.'},
     {id: 3,reviews:1, title:'title 3',charge:15,description:'A vinyl cutter is an entry level machine for making signs. Computer designed vector files with patterns and letters are directly cut on the roll of vinyl which is mounted and fed into the vinyl cutter through USB or serial cable.'},
@@ -70,7 +70,7 @@ const App =()=> {
     {id: 10,reviews:5, title:'title 10',charge:20,description:'It comes with several features such as 64MP back camera,256GB storage and 16GB RAM'}
   ]
 
-  const reviews = [
+  const reviewsObj = [
     {id:1,date:'01/01/2020',postedBy:'John Doe', rating:0, comment:'It comes with several features such as 64MP back camera,256GB storage and 16GB RAM'},
     {id:2,date:'07/01/2021',postedBy:'John Doe', rating:3, comment:'It comes with several features such as 64MP back camera,256GB storage and 16GB RAM'},
     {id:3,date:'01/01/2020',postedBy:'John Doe', rating:4, comment:'It comes with several features such as 64MP back camera,256GB storage and 16GB RAM'},
@@ -82,45 +82,102 @@ const App =()=> {
     {id:9,date:'02/02/2021',postedBy:'John Doe', rating:5, comment:'It comes with several features such as 64MP back camera,256GB storage and 16GB RAM'},
     {id:10,date:'04/04/2021',postedBy:'John Doe', rating:1, comment:'It comes with several features such as 64MP back camera,256GB storage and 16GB RAM'}  
   ]
+  const partsObj = [
+    {id:1,num:'abc', description:'screen cover',cost: 3.00, QOH:0},
+    {id:2, num:'cde',description:'Battey',cost: 10.00, QOH:0},
+    {id:3,num:'efg', description:'Charger',cost: 7.00, QOH:0},
+    {id:4,num:'ghi', description:'Power Bank',cost: 30.00, QOH:0},
+    {id:5,num:'ijk', description:'abc',cost: 3.00, QOH:0},
+  ]
   const [isLoggedIn, setLogIn] = useState(true)
   const [ repairs, setRepairs ] = useState(repairsObj)
+  const [ electronics, setElectronics ] = useState(electronicsObj)
+  const [ services, setServices ] = useState(servicesObj)
+  const [ reviews, setReviews ] = useState(reviewsObj)
+  const [ parts, setParts ] = useState(partsObj)
   // const [isAdmin, setIsAdmin] = useState(false)
   const onSubmit = (submitted)=> {
       const { 
-              city, 
               description, 
-              dmodel, 
-              dnum, 
-              dtype, 
-              fname, 
-              lname, 
-              id,
-              phone,
-              state,
-              street,
-              zip
             } = submitted;
 
     const rid = Math.floor(Math.random()*10000)+1;
     setRepairs([...repairs, {id: rid, description, title:'title N', reviews:0, charge:30, completed:false}])   
     
   }
-  console.log(repairs)
+
+  const onAddElectronics =(device) => {
+    setElectronics([...electronics, {QOH:1,...device}])
+  }
+  
+  const onSearchElectronics = (search) => {
+    const returned = electronics.filter(item=> item.title.toLowerCase()
+                                .indexOf(search.toLowerCase()) !== -1 || item.description.toLowerCase()
+                                .indexOf(search.toLowerCase()) !== -1)
+    setElectronics(returned)
+  }
+// console.log(electronics)
+  const onAddServices =(service) => {
+    const rid = Math.floor(Math.random()*10000)+1;
+    const newService = {id:rid,reviews:0,title:'test title',...service}
+    setServices([...services, newService])
+  }
+
+  const onAddReview = (review) => {
+    const id = Math.floor(Math.random()*10000)+1;
+    setReviews([...reviews, {id,...review}])
+  }
+
+  const onAddParts = (part) => {
+    const id = Math.floor(Math.random()*10000)+1;
+    setParts([{id,QOH:2,...part}, ...parts])
+  }
 
   return (
     <BrowserRouter>
       <div className='App'>
       <Routes>
-        <Route path='/' element={<Home/>}>
-          <Route path='' element={<Electronics data={electronics}/>}/>
-          <Route path='electronics' element={<Electronics data={electronics}/>}/>
-          <Route path='services' element={<Services data={services}/>}/>
-          <Route path='reviews' element={<Reviews data={reviews}/>}/>
+        <Route 
+          path='/' 
+          element={<Home onAddReview={onAddReview} onSearchElectronics={onSearchElectronics}/>}>
+          <Route 
+            path='' 
+            element={<Electronics 
+                        data={electronics}/>}/>
+          <Route 
+            path='electronics' 
+            element={<Electronics 
+            data={electronics}/>}/>
+          <Route 
+            path='services' 
+            element={<Services 
+            data={services}/>}/>
+          <Route 
+            path='reviews' 
+            element={<Reviews 
+            data={reviews}/>}/>
         </Route>
-        <Route path='/login' element={<Login/>}/>
-        <Route path='/portal' element={isLoggedIn? <Admin data={repairs} onSubmit={onSubmit}/>: <Navigate to='/login' element={<Login/>}/>}/>
-        <Route path='/register' element={<RegisterUser/>}/>
-        <Route path='/*' element={<Error404/>}/>
+        <Route 
+          path='/login' 
+          element={<Login/>}/>
+        <Route 
+          path='/portal' 
+          element={isLoggedIn? <Admin 
+                                  data={repairs} 
+                                  parts ={parts}
+                                  onSubmit={onSubmit}
+                                  onAddElectronics={onAddElectronics}
+                                  onAddServices={onAddServices}
+                                  onAddParts={onAddParts}
+                                  />: <Navigate 
+                                                            to='/login' 
+                                                            element={<Login/>}/>}/>
+        {/* <Route 
+          path='/register' 
+          element={<RegisterUser/>}/> */}
+        <Route 
+          path='/*' 
+          element={<Error404/>}/>
       </Routes>
       </div>
     </BrowserRouter>

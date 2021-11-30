@@ -2,6 +2,8 @@ import Item from "./Item"
 
 
 const Electronics = ({data}) => {
+
+    console.log(data.length)
     const itemJSX = data.map((item,i)=> {
         return (<li key={item.id} className='Item'>
                 <Item key={i} src={item.imgURL} alt={item.title} data={{
@@ -16,7 +18,7 @@ const Electronics = ({data}) => {
         <div className='DynamicRegion'>
             <h2>Available Electronics & Accessories</h2>
             <ul className='ItemList'>
-                {itemJSX}
+                {data.length ?itemJSX:'No Item Found'}
             </ul>
         </div>
     )

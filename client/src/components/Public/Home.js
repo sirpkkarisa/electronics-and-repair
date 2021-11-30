@@ -2,11 +2,11 @@ import Body from "./Body";
 import Footer from "./Footer";
 import Header from "./Header";
 
-const Home = () => {
+const Home = ({ onAddReview, onSearchElectronics }) => {
     return (
         <div>
             <Header/>
-            <Body/>
+            <Body onAddReview={onAddReview} onSearchElectronics={onSearchElectronics}/>
             <Footer/>
         </div>
     )
