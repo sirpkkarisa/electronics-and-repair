@@ -1,9 +1,9 @@
 const express = require('express');
-const passport = require('passport');
+// const passport = require('passport');
 const { getDevices, addDevices, getServices, 
     addServices, getParts, addParts, 
     getRepairRequests, addRepairs, getCompletedRepairs, 
-    addToCompleted, getReviews } = require('../controllers/devices');
+    addToCompleted, getReviews, addReview } = require('../controllers/devices');
 
 
 const router = express.Router();
@@ -30,7 +30,7 @@ router.route('/completed-repairs')
 
 router.route('/reviews')
     .get(getReviews)
-    .post(addServices)
+    .post(addReview)
 
 
 

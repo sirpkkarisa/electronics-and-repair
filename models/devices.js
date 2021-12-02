@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const Devices = new Schema({
-    devicType: {
+    deviceType: {
         type: String,
         trim: true,
         required: [true, 'Please provide device type']
@@ -28,6 +28,7 @@ const Devices = new Schema({
     serialNo: {
         type: String,
         trim: true,
+        unique: true,
         required: [true, 'Please provide device serial number']
     }
 })
@@ -39,7 +40,7 @@ const RepairRequests = new Schema({
         unique: true,
     },
     customer: {
-        ID: {
+        customerID: {
             type: String,
             trim: true,
             required: [true, 'Customer ID/Passport Number required']
@@ -83,7 +84,7 @@ const RepairRequests = new Schema({
             trim: true,
             required: true
         },
-        devicType: {
+        deviceType: {
             type: String,
             trim: true,
             required: true
@@ -114,14 +115,69 @@ const CompletedRepairs = new Schema({
     services: {
         type: Array,
         required: true
-    }
+    },
+    customer: {
+        customerID: {
+            type: String,
+            trim: true,
+            required: [true, 'Customer ID/Passport Number required']
+        },
+        firstName: {
+            type: String,
+            trim: true,
+            required: [true, 'Customer names required']
+        },
+        lastName: {
+            type: String,
+            trim: true,
+            required: [true, 'Customer names required']
+        },
+        street: {
+            type: String,
+            trim: true,
+            required: [true, 'Street number required']
+        },
+        city: {
+            type: String,
+            trim: true,
+        },
+        state: {
+            type: String,
+            trim: true
+        },
+        zip: {
+            type: String,
+            trim: true
+        },
+        phone: {
+            type: String,
+            trim: true,
+            required: [true, 'Phone number is required']
+        }
+    },
+    device: {
+        serialNo: {
+            type: String,
+            trim: true,
+            required: true
+        },
+        deviceType: {
+            type: String,
+            trim: true,
+            required: true
+        },
+        model: {
+            type: String,
+            trim: true,
+            required: true
+        }
+    },
 })
 
 const Parts = new Schema({
     partNo: {
         type: String,
-        trim: true,
-        required: [true, 'Provide part number']
+        trim: true
     },
     cost: {
         type: Number,

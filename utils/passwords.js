@@ -24,7 +24,7 @@ exports.verifyPassword = (password, hash, salt) => {
 
 exports.getJWT = (user) => {
     const { _id } = user;
-    const expiresIn = '1d';
+    const expiresIn = '2hr';
 
     const payload = {
         sub: _id,
