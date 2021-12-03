@@ -19,7 +19,14 @@ exports.addReview = async (req, res) => {
                             message: 'Both name and a comment are required'
                         })
         }
-        const review = await Reviews.create(req.body);
+        const db_review = await Reviews.create(req.body);
+        const review = {
+            id: db_review._id,
+            postedBy: db_review.postedBy,
+            comment: db_review.comment,
+            rating: db_review.rating,
+            date: new Date(db_review.createdOn).toLocaleDateString()
+        }
 
         res.status(201)
             .json({
@@ -45,8 +52,17 @@ exports.addReview = async (req, res) => {
 
 exports.getReviews = async (req, res) => {
     try {
-        const reviews = await Reviews.find();
-
+        const db_reviews = await Reviews.find();
+        const reviews = db_reviews.map(item => {
+            const {_id, postedBy, comment, rating, createdOn} = item;
+            return {
+                id: _id,
+                postedBy,
+                comment,
+                rating,
+                date: new Date(createdOn).toLocaleDateString()
+            }
+        })
         res.status(200)
             .json({
                 reviews,
@@ -71,8 +87,18 @@ exports.getReviews = async (req, res) => {
 
  exports.getServices = async (req, res) => {
     try {
-        const services = await Services.find();
-
+        const db_services = await Services.find();
+        
+        const services = db_services.map(item => {
+            const {_id, title, description, charge, reviews} = item;
+            return {
+                id: _id,
+                title,
+                description,
+                charge,
+                reviews: reviews.length
+            }
+        })
         res.status(200)
             .json({
                 services,
@@ -108,7 +134,13 @@ exports.addServices = async (req, res) => {
 
         res.status(201)
             .json({
-                service,
+                service: {
+                    id: service._id,
+                    title: service.title,
+                    description: service.title,
+                    charge: service.charge,
+                    reviews: service.reviews.length 
+                },
                 success: true
             })
     } catch (error) {
@@ -130,7 +162,19 @@ exports.addServices = async (req, res) => {
 
 exports.getDevices = async (req, res)=> {
     try {
-        const devices = await Devices.find();
+        const db_devices = await Devices.find();
+        const devices = db_devices.map(item => {
+            const {_id, cost, description, imgURL, deviceType} = item;
+            
+            return {
+                id: _id,
+                cost,
+                description,
+                imgURL,
+                QOH: Math.round(Math.random() *10)+1,
+                title: deviceType
+            }
+        })
         res.status(200)
             .json({
                 devices,
@@ -172,11 +216,18 @@ exports.getDevices = async (req, res)=> {
                             message: 'Device Number provided is already registered'
                         })
         }
-        const device = await Devices.create(req.body);
+        const db_device = await Devices.create(req.body);
 
         res.status(201)
             .json({
-                device,
+                device:{
+                    id: db_device._id,
+                    cost: db_device.cost,
+                    description: db_device.description,
+                    deviceType: db_device.deviceType,
+                    imgURL: db_device.imgURL,
+                    QOH: Math.round(Math.random() *10)+1,
+                },  
                 success: true
             })
     } catch (error) {
@@ -359,11 +410,11 @@ exports.getCompletedRepairs = async (req, res) => {
                         })
         }
 
-        const parts = await Parts.create(req.body);
-
+        const db_part= await Parts.create(req.body);
+        const part = {id:db_part._id, cost: db_part.cost,description: db_part.description, num: db_part.partNo,QOH: Math.round(Math.random() *10)}; 
         res.status(201)
             .json({
-                parts,
+                part,
                 success: true
             })
     } catch (error) {
@@ -382,8 +433,17 @@ exports.getCompletedRepairs = async (req, res) => {
 */
 exports.getParts = async (req, res) => {
     try {
-        const parts = await Parts.find();
-
+        const db_parts = await Parts.find();
+        const parts = db_parts.map(item =>{
+            const { _id, partNo, description, cost } = item;
+            return {
+                id: _id,
+                num:partNo,
+                description,
+                cost,
+                QOH: Math.round(Math.random() *10)
+            }
+        })
         res.status(200)
             .json({
                 parts,

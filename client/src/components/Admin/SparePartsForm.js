@@ -9,7 +9,7 @@ const SparePartsForm = ({ onAddParts }) => {
     const handleSubmit = (e) => {
         e.preventDefault()
 
-        onAddParts({num, description, cost})
+        onAddParts({partNo:num, description, cost})
     }
     return (
         <div className='Form'>

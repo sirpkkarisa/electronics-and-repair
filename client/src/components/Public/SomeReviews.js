@@ -22,8 +22,8 @@ const SomeReviews = ({onAddReview}) => {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        const date = new Date().toLocaleDateString()
-        onAddReview({postedBy, comment, rating: currentVal, date})
+        // const date = new Date().toLocaleDateString()
+        onAddReview({postedBy, comment, rating: currentVal})
     }
     const onClick=(e)=> {
         e.preventDefault()

@@ -2,4 +2,3 @@ node_modules
 .env
 pub_key.pem
 priv_key.pem
-auth

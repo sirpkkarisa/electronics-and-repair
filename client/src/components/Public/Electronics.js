@@ -3,11 +3,10 @@ import Item from "./Item"
 
 const Electronics = ({data}) => {
 
-    console.log(data.length)
     const itemJSX = data.map((item,i)=> {
         return (<li key={item.id} className='Item'>
-                <Item key={i} src={item.imgURL} alt={item.title} data={{
-                    title: item.title,
+                <Item key={i} src={item.imgURL} alt={item.deviceType} data={{
+                    title: item.deviceType,
                     cost: item.cost,
                     QOH: item.QOH,
                     description: item.description,
